@@ -40,7 +40,7 @@ target_list=""
 output_file="output.txt"
 nuclei_result="result.txt"
 httpx_result="result_status.txt"
-hakrawler_depth=3
+hakrawler_depth=5
 katana_depth=5
 selected_tools=()
 
