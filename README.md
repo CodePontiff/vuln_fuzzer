@@ -1,13 +1,12 @@
 # Vuln Fuzzer 🛠️🔍  
 
 **Vuln Fuzzer** is an automated vulnerability discovery tool that gathers parameters and URLs from multiple sources and scans for potential security issues.  
-It integrates with **ParamSpider, WaybackURLs, Hakrawler, Katana, Nuclei, and Httpx** to streamline the reconnaissance and scanning process.  
+It integrates with **WaybackURLs, Hakrawler, Katana, Nuclei, and Httpx** to streamline the reconnaissance and scanning process.  
 
 
 ## 🔗 Credits & Dependencies  
 This tool integrates the following open-source tools:  
 
-- [ParamSpider](https://github.com/devanshbatham/ParamSpider) - Parameter extraction  
 - [WaybackURLs](https://github.com/tomnomnom/waybackurls) - URL enumeration  
 - [Hakrawler](https://github.com/hakluke/hakrawler) - Web crawling  
 - [Katana](https://github.com/projectdiscovery/katana) - Web crawling  
@@ -33,7 +32,6 @@ Please refer to their repositories for licensing details.
 ## 🔧 Installation  
 ```text
 Ensure the required tools are installed before running:  
-- [ParamSpider](https://github.com/devanshbatham/ParamSpider) - Parameter extraction  
 - [WaybackURLs](https://github.com/tomnomnom/waybackurls) - URL enumeration  
 - [Hakrawler](https://github.com/hakluke/hakrawler) - Web crawling  
 - [Katana](https://github.com/projectdiscovery/katana) - Web crawling  
@@ -53,11 +51,8 @@ chmod +x vuln_fuzzer.sh
 
 Options:
 -u → Target domain
--l → list of target url or subdomain
 -o → Output file for validated results
 -d → Depth level for Hakrawler and Katana
--c → Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,Katana., you can chose multiple or more seperated by comma (,) ex: -c Paramspider,Katana)
--A → Select Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,katana)
 ```
 
 ## Example 📖
