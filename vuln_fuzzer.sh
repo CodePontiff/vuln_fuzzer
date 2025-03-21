@@ -22,6 +22,8 @@ echo ""
 echo "            Automated Vulnerability Discovery Tool"
 echo "                 By: C0d3p0nt1f | #Christus_Salvatoris_Mundi#"
 echo ""
+                                                                    #Ad Maiorem Natus Sum
+
 
 # Ensure all required tools are installed
 tools=(paramspider waybackurls hakrawler katana nuclei httpx)
