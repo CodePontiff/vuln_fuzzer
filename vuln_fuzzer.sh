@@ -22,8 +22,6 @@ echo ""
 echo "            Automated Vulnerability Discovery Tool"
 echo "                 By: C0d3p0nt1f | #Christus_Salvatoris_Mundi#"
 echo ""
-                                                                    #Ad Maiorem Natus Sum
-
 
 # Ensure all required tools are installed
 tools=(paramspider waybackurls hakrawler katana nuclei httpx)
@@ -40,12 +38,12 @@ target_list=""
 output_file="output.txt"
 nuclei_result="result.txt"
 httpx_result="result_status.txt"
-hakrawler_depth=5
+hakrawler_depth=3
 katana_depth=5
 selected_tools=()
 
 # Parse options
-while getopts "u:o:d:c:Al:" opt; do
+while getopts "u:o:d:c:Al:t" opt; do
     case ${opt} in
         u ) target=$OPTARG ;;
         o ) httpx_result=$OPTARG ;;
@@ -75,10 +73,10 @@ fi
 for t in "${targets[@]}"; do
     for tool in "${selected_tools[@]}"; do
         case $tool in
-            paramspider ) paramspider -d "$t" -o $output_file --exclude "png,jpg,gif" --level high --quiet ;;
-            waybackurls ) waybackurls "$t" >> $output_file ;;
+            paramspider ) echo "$t" | paramspider -o $output_file --exclude "png,jpg,gif" --level high --quiet ;;
+            waybackurls ) echo "$t"| waybackurls >> $output_file ;;
             hakrawler ) echo "$t" | hakrawler -d "$hakrawler_depth" -subs -u >> $output_file ;;
-            katana ) katana -u "$t" -jc -kf -d "$katana_depth" >> $output_file ;;
+            katana ) echo "$t" | katana -kf -jc -d "$katana_depth" >> $output_file ;;
         esac
     done
 
