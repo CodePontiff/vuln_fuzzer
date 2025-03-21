@@ -12,10 +12,9 @@ Features 🚀
 Installation 🔧
 Ensure the required tools are installed before running:
 
-/n
 Install:
 git clone https://github.com/CodePontiff/vuln_fuzzer
-cd vuln-fuzzer  
+\n cd vuln-fuzzer  
 chmod +x vuln_fuzzer.sh  
 
 Usage 📌:
