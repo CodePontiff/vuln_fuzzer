@@ -74,7 +74,7 @@ sort -u "$output_file" >> "$output_file"
 
 #Nuclei
 echo "[+] Running Nuclei..."
-nuclei -list "$output_file" -dast -rl 50 -o "$nuclei_result"
+nuclei -list "$output_file" -no-mhe -dast -rl 50 -o "$nuclei_result"
 
 echo "[+] Running Httpx for validation..."
 httpx -list "$nuclei_result" -sc > $output_file
