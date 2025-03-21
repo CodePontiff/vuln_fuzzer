@@ -85,7 +85,7 @@ for t in "${targets[@]}"; do
                 if [ -n "$target_list" ]; then
                     katana -list "$target_list" -kf -jc -d "$katana_depth" >> "$output_file"
                 else
-                    echo "$t" | katana -kf -jc -d "$katana_depth" >> "$output_file"
+                    katana -u "$t" -kf -jc -d "$katana_depth" >> "$output_file"
                 fi
                 ;;
         esac
