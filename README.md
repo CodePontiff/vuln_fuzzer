@@ -56,7 +56,7 @@ Options:
 -l → list of target url or subdomain
 -o → Output file for validated results
 -d → Depth level for Hakrawler and Katana
--c → Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,Katana,  you can chose multiple or more seperated by comma (,) ex: -c Paramspider,Katana)
+-c → Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,Katana., you can chose multiple or more seperated by comma (,) ex: -c Paramspider,Katana)
 -A → Select Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,katana)
 ```
 
