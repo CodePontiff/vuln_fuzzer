@@ -32,11 +32,11 @@ Please refer to their repositories for licensing details.
 ## 🔧 Installation  
 ```text
 Ensure the required tools are installed before running:  
-- [WaybackURLs](https://github.com/tomnomnom/waybackurls) - URL enumeration  
-- [Hakrawler](https://github.com/hakluke/hakrawler) - Web crawling  
-- [Katana](https://github.com/projectdiscovery/katana) - Web crawling  
-- [Nuclei](https://github.com/projectdiscovery/nuclei) - Vulnerability scanning  
-- [Httpx](https://github.com/projectdiscovery/httpx) - HTTP response validation
+- WaybackURLs -> https://github.com/tomnomnom/waybackurls   - URL enumeration  
+- Hakrawler   -> https://github.com/hakluke/hakrawler       - Web crawling  
+- Katana      -> https://github.com/projectdiscovery/katana - Web crawling  
+- Nuclei      -> https://github.com/projectdiscovery/nuclei - Vulnerability scanning  
+- Httpx       -> https://github.com/projectdiscovery/httpx  - HTTP response validation
 
 Install Vuln_Fuzzer:
 git clone https://github.com/CodePontiff/vuln_fuzzer
