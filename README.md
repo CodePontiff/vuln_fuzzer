@@ -31,9 +31,9 @@ chmod +x vuln_fuzzer.sh
 ```sh
 ./vuln_fuzzer.sh -u <target_domain> -o <output_file> -d <depth>
 ```
-##-u → Target domain
-##-o → Output file for validated results
-##-d → Depth level for Hakrawler and Katana
+## -u → Target domain
+## -o → Output file for validated results
+## -d → Depth level for Hakrawler and Katana
 
 ## Example 📖
 
