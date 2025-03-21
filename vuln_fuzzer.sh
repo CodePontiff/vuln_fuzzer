@@ -20,10 +20,8 @@ echo "        ▐░▌        ▐░░░░░░░░░░░▌▐░░�
 echo "         ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀ "
 echo ""
 echo "            Automated Vulnerability Discovery Tool"
-echo "                 By: C0d3p0nt1f | @C0d3p0nt1f"
+echo "                 By: C0d3p0nt1f | #Christus_Salvatoris_Mundi#"
 echo ""
-#Ad Maiorem Dei Gloriam
-
 
 # Ensure all required tools are installed
 tools=(paramspider waybackurls hakrawler katana nuclei httpx)
@@ -51,7 +49,7 @@ while getopts "u:o:d:c:Al:" opt; do
         o ) httpx_result=$OPTARG ;;
         d ) hakrawler_depth=$OPTARG; katana_depth=$OPTARG ;;
         c ) IFS=',' read -r -a selected_tools <<< "$OPTARG" ;;
-        A ) selected_tools=(paramspider waybackurls hakrawler katana assetfinder) ;;
+        A ) selected_tools=(paramspider waybackurls hakrawler katana) ;;
         l ) target_list=$OPTARG ;;
         * ) echo "Usage: $0 -u <target_domain> -o <output_file> -d <depth> -c <tools> -A -l <target_list>"; exit 1 ;;
     esac
@@ -75,7 +73,6 @@ fi
 for t in "${targets[@]}"; do
     for tool in "${selected_tools[@]}"; do
         case $tool in
-            assetfinder ) assetfinder --subs-only "$t" >> $output_file ;;
             paramspider ) paramspider -d "$t" -o $output_file --exclude "png,jpg,gif" --level high --quiet ;;
             waybackurls ) waybackurls "$t" >> $output_file ;;
             hakrawler ) echo "$t" | hakrawler -d "$hakrawler_depth" -subs -u >> $output_file ;;
