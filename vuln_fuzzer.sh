@@ -78,7 +78,7 @@ for t in "${targets[@]}"; do
             paramspider ) paramspider -d "$t" -o $output_file --exclude "png,jpg,gif" --level high --quiet ;;
             waybackurls ) waybackurls "$t" >> $output_file ;;
             hakrawler ) echo "$t" | hakrawler -d "$hakrawler_depth" -subs -u >> $output_file ;;
-            katana ) katana -u "$t" -jc -d "$katana_depth" >> $output_file ;;
+            katana ) katana -u "$t" -jc -kf -d "$katana_depth" >> $output_file ;;
         esac
     done
 
