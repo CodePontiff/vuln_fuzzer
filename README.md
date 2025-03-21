@@ -21,7 +21,6 @@ Please refer to their repositories for licensing details.
 ## 🚀 Features  
 
 ✅ Collect URLs and parameters from multiple sources  
-✅ Filter out unnecessary extensions  
 ✅ Perform active vulnerability scanning using **Nuclei**  
 ✅ Validate findings using **Httpx**  
 ✅ Adjustable depth levels for **Hakrawler** and **Katana**  
