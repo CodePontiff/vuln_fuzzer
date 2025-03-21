@@ -20,8 +20,8 @@ echo "        ▐░▌        ▐░░░░░░░░░░░▌▐░░�
 echo "         ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀ "
 echo ""
 echo "            Automated Vulnerability Discovery Tool"
-echo "                 By: C0d3p0nt1f | #Christus_Salvatoris_Mundi#"
-echo ""
+echo "                 By: @C0d3p0nt1f | @C0d3p0nt1f"
+                                                                #Ad Maiora Natus Sum
 
 # Ensure all required tools are installed
 tools=(paramspider waybackurls hakrawler katana nuclei httpx)
@@ -41,9 +41,10 @@ httpx_result="result_status.txt"
 hakrawler_depth=3
 katana_depth=5
 selected_tools=()
+nuclei_template=""
 
 # Parse options
-while getopts "u:o:d:c:Al:t" opt; do
+while getopts "u:o:d:c:Al:t:" opt; do
     case ${opt} in
         u ) target=$OPTARG ;;
         o ) httpx_result=$OPTARG ;;
@@ -51,12 +52,13 @@ while getopts "u:o:d:c:Al:t" opt; do
         c ) IFS=',' read -r -a selected_tools <<< "$OPTARG" ;;
         A ) selected_tools=(paramspider waybackurls hakrawler katana) ;;
         l ) target_list=$OPTARG ;;
-        * ) echo "Usage: $0 -u <target_domain> -o <output_file> -d <depth> -c <tools> -A -l <target_list>"; exit 1 ;;
+        t ) nuclei_template=$OPTARG ;;
+        * ) echo "Usage: $0 -u <target_domain> -o <output_file> -d <depth> -c <tools> -A -l <target_list> -t <nuclei_template>"; exit 1 ;;
     esac
 done
 
 if [ -z "$target" ] && [ -z "$target_list" ]; then
-    echo "Usage: $0 -u <target_domain> -o <output_file> -d <depth> -c <tools> -A -l <target_list>"
+    echo "Usage: $0 -u <target_domain> -o <output_file> -d <depth> -c <tools> -A -l <target_list> -t <nuclei_template>"
     exit 1
 fi
 
@@ -73,17 +75,33 @@ fi
 for t in "${targets[@]}"; do
     for tool in "${selected_tools[@]}"; do
         case $tool in
-            paramspider ) echo "$t" | paramspider -o $output_file --exclude "png,jpg,gif" --level high --quiet ;;
-            waybackurls ) echo "$t"| waybackurls >> $output_file ;;
-            hakrawler ) echo "$t" | hakrawler -d "$hakrawler_depth" -subs -u >> $output_file ;;
-            katana ) echo "$t" | katana -kf -jc -d "$katana_depth" >> $output_file ;;
+            paramspider )
+                if [ -n "$target_list" ]; then
+                    paramspider -l "$t" -o "$output_file" --exclude "png,jpg,gif" --level high --quiet
+                else
+                    paramspider -d "$t" -o "$output_file" --exclude "png,jpg,gif" --level high --quiet
+                fi
+                ;;
+            waybackurls ) echo "$t" | waybackurls >> "$output_file" ;;
+            hakrawler ) echo "$t" | hakrawler -d "$hakrawler_depth" -subs -u >> "$output_file" ;;
+            katana )
+                if [ -n "$target_list" ]; then
+                    katana -list "$t" -kf -jc -d "$katana_depth" >> "$output_file"
+                else
+                    echo "$t" | katana -kf -jc -d "$katana_depth" >> "$output_file"
+                fi
+                ;;
         esac
     done
-
 done
 
-sort -u $output_file -o $output_file
+sort -u "$output_file" -o "$output_file"
 
-nuclei -list $output_file -dast -rl 50 -o $nuclei_result
-httpx -list $nuclei_result -sc -o $httpx_result
+if [ -n "$nuclei_template" ]; then
+    nuclei -list "$output_file" -t "$nuclei_template" -dast -rl 50 -o "$nuclei_result"
+else
+    nuclei -list "$output_file" -dast -rl 50 -o "$nuclei_result"
+fi
+
+httpx -list "$nuclei_result" -sc -o "$httpx_result"
 echo "[+] Process complete! Check results in $httpx_result"
