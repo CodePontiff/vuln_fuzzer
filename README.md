@@ -38,9 +38,9 @@ Ensure the required tools are installed before running:
 - [Hakrawler](https://github.com/hakluke/hakrawler) - Web crawling  
 - [Katana](https://github.com/projectdiscovery/katana) - Web crawling  
 - [Nuclei](https://github.com/projectdiscovery/nuclei) - Vulnerability scanning  
-- [Httpx](https://github.com/projectdiscovery/httpx) - HTTP response validation  
-```
-```sh
+- [Httpx](https://github.com/projectdiscovery/httpx) - HTTP response validation
+
+Install Vuln_Fuzzer:
 git clone https://github.com/CodePontiff/vuln_fuzzer
 cd vuln_fuzzer
 chmod +x vuln_fuzzer.sh
@@ -48,14 +48,15 @@ chmod +x vuln_fuzzer.sh
 
 ## 📌 Usage
 
-```sh
-./vuln_fuzzer.sh -u <target_domain> -o <output_file> -d <depth>
-```
 ```text
+./vuln_fuzzer.sh -u <target_domain> -o <output_file> -d <depth>
+
+Options:
 -u → Target domain
 -o → Output file for validated results
 -d → Depth level for Hakrawler and Katana
 ```
+
 ## Example 📖
 
 ```sh
