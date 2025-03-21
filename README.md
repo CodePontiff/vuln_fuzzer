@@ -49,12 +49,15 @@ chmod +x vuln_fuzzer.sh
 ## 📌 Usage
 
 ```text
-./vuln_fuzzer.sh -u <target_domain> -o <output_file> -d <depth>
+./vuln_fuzzer.sh -u <target_domain> -l <target_list> -o <output_file> -c <tools> -A -d <depth>  
 
 Options:
 -u → Target domain
+-l → list of target url or subdomain
 -o → Output file for validated results
 -d → Depth level for Hakrawler and Katana
+-c → Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,Katana,  you can chose multiple or more seperated by comma (,) ex: -c Paramspider,Katana)
+-A → Select Tools for url fuzzing (Paramspider,WaybackUrls,Hakrawler,katana)
 ```
 
 ## Example 📖
