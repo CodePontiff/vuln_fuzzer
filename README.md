@@ -13,15 +13,15 @@ Installation 🔧
 Ensure the required tools are installed before running:
 
 Install:
-git clone https://github.com/CodePontiff/vuln_fuzzer
-\n cd vuln-fuzzer  
-chmod +x vuln_fuzzer.sh  
+✅git clone https://github.com/CodePontiff/vuln_fuzzer
+✅cd vuln-fuzzer  
+✅chmod +x vuln_fuzzer.sh  
 
 Usage 📌:
-./vuln_fuzzer.sh -u <target_domain> -o <output_file> -d <depth>
--u → Target domain
--o → Output file for validated results
--d → Depth level for Hakrawler and Katana
+✅./vuln_fuzzer.sh -u <target_domain> -o <output_file> -d <depth>
+✅-u → Target domain
+✅-o → Output file for validated results
+✅-d → Depth level for Hakrawler and Katana
 
 Example 📖:
 ./vuln_fuzzer.sh -u example.com -o final_results.txt -d 5
