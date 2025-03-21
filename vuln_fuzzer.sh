@@ -19,9 +19,9 @@ echo "       ▐░▐░▌       ▐░█▄▄▄▄▄▄▄█░▌▐░
 echo "        ▐░▌        ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌"
 echo "         ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀ "
 echo ""
-echo "            Automated Vulnerability Discovery Tool"
-echo "                 By: @C0d3p0nt1f | @C0d3p0nt1f"
-                                                                #Ad Maiora Natus Sum
+echo "                                            Automated Vulnerability Discovery Tool"
+echo "                                                 By: @C0d3p0nt1f | @C0d3p0nt1f"
+                                                                                                                          #Ad Maiora Natus Sum
 
 # Ensure all required tools are installed
 tools=(paramspider waybackurls hakrawler katana nuclei httpx)
@@ -62,14 +62,11 @@ if [ -z "$target" ] && [ -z "$target_list" ]; then
     exit 1
 fi
 
-# Process single target
-if [ -n "$target" ]; then
-    targets=($target)
-fi
-
-# Process multiple targets
+# Process targets
 if [ -n "$target_list" ]; then
     mapfile -t targets < "$target_list"
+else
+    targets=($target)
 fi
 
 for t in "${targets[@]}"; do
@@ -77,7 +74,7 @@ for t in "${targets[@]}"; do
         case $tool in
             paramspider )
                 if [ -n "$target_list" ]; then
-                    paramspider -l "$t" -o "$output_file" --exclude "png,jpg,gif" --level high --quiet
+                    paramspider -l "$target_list" -o "$output_file" --exclude "png,jpg,gif" --level high --quiet
                 else
                     paramspider -d "$t" -o "$output_file" --exclude "png,jpg,gif" --level high --quiet
                 fi
@@ -86,7 +83,7 @@ for t in "${targets[@]}"; do
             hakrawler ) echo "$t" | hakrawler -d "$hakrawler_depth" -subs -u >> "$output_file" ;;
             katana )
                 if [ -n "$target_list" ]; then
-                    katana -list "$t" -kf -jc -d "$katana_depth" >> "$output_file"
+                    katana -list "$target_list" -kf -jc -d "$katana_depth" >> "$output_file"
                 else
                     echo "$t" | katana -kf -jc -d "$katana_depth" >> "$output_file"
                 fi
