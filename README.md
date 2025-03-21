@@ -4,7 +4,7 @@
 It integrates with **ParamSpider, WaybackURLs, Hakrawler, Katana, Nuclei, and Httpx** to streamline the reconnaissance and scanning process.  
 
 
-## Credits & Dependencies  
+## 🔗 Credits & Dependencies  
 This tool integrates the following open-source tools:  
 
 - [ParamSpider](https://github.com/devanshbatham/ParamSpider) - Parameter extraction  
@@ -29,9 +29,9 @@ Please refer to their repositories for licensing details.
 ✅ Simple CLI with customizable options  
 
 ---
-```text
-## 🔧 Installation  
 
+## 🔧 Installation  
+```text
 Ensure the required tools are installed before running:  
 - [ParamSpider](https://github.com/devanshbatham/ParamSpider) - Parameter extraction  
 - [WaybackURLs](https://github.com/tomnomnom/waybackurls) - URL enumeration  
