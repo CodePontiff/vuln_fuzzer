@@ -68,8 +68,12 @@ echo "$target" | hakrawler -d "$hakrawler_depth" -subs -u >> "$output_file"
 echo "[+] Running Katana..."
 katana -u "$target" -jc -d "$katana_depth" >> "$output_file"
 
+#Sort
+echo "[+] Sorting..."
+sort -u "$output_file" >> "$output_file"
+
 #Nuclei
-echo "[+] Running Hakrawler..."
+echo "[+] Running Nuclei..."
 nuclei -list "$output_file" -dast -rl 50 -o "$nuclei_result"
 
 echo "[+] Running Httpx for validation..."
