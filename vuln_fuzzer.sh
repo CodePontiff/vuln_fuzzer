@@ -62,7 +62,7 @@ waybackurls "$target" > "$output_file"
 
 #Hakrawler
 echo "[+] Running Hakrawler..."
-echo "$target" | hakrawler -d "$hakrawler_depth" -subs -u >> "$output_file"
+echo "$target" | hakrawler -d "$hakrawler_depth" -subs -timeout 5 >> "$output_file"
 
 #Katana
 echo "[+] Running Katana..."
@@ -74,7 +74,7 @@ sort -u "$output_file" >> "$output_file"
 
 #Nuclei
 echo "[+] Running Nuclei..."
-nuclei -list "$output_file" -no-mhe -dast -rl 50 -o "$nuclei_result"
+nuclei -list "$output_file" -nmhe -dast -rl 3 -c 2 -o "$nuclei_result" # please add nuclei option here if you like (ex: -t ,-s ) # 
 
 echo "[+] Running Httpx for validation..."
 httpx -list "$nuclei_result" -sc > $output_file
