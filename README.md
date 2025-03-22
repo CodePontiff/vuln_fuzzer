@@ -52,7 +52,10 @@ Options:
 -u → Target domain
 -o → Output file for validated results
 -d → Depth level for Hakrawler and Katana
+
+at nuclei section please add option manualy at vuln_fuzzer.sh if you like, by default vuln_fuzzer using -nhme, -dast, -rl 3 , -c 2 and -o
 ```
+
 
 ## Example 📖
 
